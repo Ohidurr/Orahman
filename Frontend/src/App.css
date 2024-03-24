@@ -74,4 +74,9 @@ footer {
 }
 
 /* Responsive Adjustments */
-@media (max-width
+@media (max-width: 768px) {
+  nav ul li {
+      display: block;
+      margin: 10px 0;
+  }
+}

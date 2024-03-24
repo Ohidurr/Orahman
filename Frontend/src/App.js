@@ -14,7 +14,9 @@ function App() {
         <Landing />
       </header>
       <main>
-        <About />
+        <section id="About">
+          <About />
+        </section>
         <Portfolio />
         <Contact />
       </main>
