@@ -80,3 +80,20 @@ footer {
       margin: 10px 0;
   }
 }
+
+/* Existing styles */
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #333;
+  color: #f5f5f7;
+}
+
+.dark-mode nav ul li a {
+  color: #f5f5f7;
+}
+
+.dark-mode section {
+  background-color: #454545;
+  color: #f5f5f7;
+}
