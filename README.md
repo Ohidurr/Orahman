@@ -1,4 +1,4 @@
-# Ohidur Rahman's Personal Website
+# Ohidur's Personal Website
 
 Welcome to the repository of my personal website, a dynamic digital space that reflects my professional journey, interests, and skills. This platform serves not only as a portfolio of my work but also as a testament to my continuous pursuit of learning and personal growth.
 
