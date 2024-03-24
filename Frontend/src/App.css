@@ -1,0 +1,77 @@
+/* Basic Reset and Font Setup */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Consolas, 'Courier New', monospace; /* Using Consolas with fallbacks */
+  background-color: #f5f5f7;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Simplified Navigation */
+nav {
+  background: transparent;
+  text-align: center;
+  padding: 20px 0;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+}
+nav ul li a:hover {
+  color: #007aff; /* Apple blue for hover state */
+}
+
+/* Card-style Sections with Hover Effect */
+section {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  max-width: 800px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+section:hover {
+  transform: translateY(-5px); /* Slightly raise the card */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase shadow for elevated effect */
+}
+
+/* Landing Section */
+#landing {
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+/* Text Styling */
+h1, h2 {
+  font-weight: 700;
+  margin: 10px 0;
+}
+p {
+  margin: 10px 0 20px;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Responsive Adjustments */
+@media (max-width
