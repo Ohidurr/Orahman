@@ -1,7 +1,7 @@
 import React from 'react';
 // Importing Font Awesome components and specific icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Contact() {
   return (
