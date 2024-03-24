@@ -4,15 +4,38 @@
 }
 
 #landing h1 {
-    font-size: 2.5rem; /* Make the text larger */
+    font-size: 2.5rem; /* Adjust if necessary for overall text size */
     margin: 0.5em 0;
 }
 
-#landing h1:first-of-type {
-    font-size: 4rem; /* Larger size for the emoji */
+/* Specify for the emoji specifically if using separate elements */
+#landing .emoji {
+    font-size: 4rem; /* Adjust if necessary for the emoji size */
+    vertical-align: middle; /* Align emoji with the adjacent text */
 }
 
 #landing p {
     font-size: 1.25rem;
-    color: #666; /* Subtle color for the introductory text */
+    color: #666;
+}
+
+/* Unified wave animation */
+@keyframes waveAnimation {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 60% { transform: rotate(-10deg); }
+    40%, 80% { transform: rotate(10deg); }
+}
+
+.wave {
+    display: inline-block;
+    animation: waveAnimation 2s ease-in-out;
+    animation-iteration-count: infinite; /* Or '1' for a single wave */
+    transform-origin: 70% 100%; /* Adjust based on visual testing */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #landing h1 {
+        font-size: 1.5rem; /* Smaller for mobile devices */
+    }
 }
