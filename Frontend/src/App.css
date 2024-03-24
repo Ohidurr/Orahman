@@ -80,3 +80,61 @@ footer {
       margin: 10px 0;
   }
 }
+.social-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #333; /* Default icon color */
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007aff; /* Change icon color on hover */
+}
+
+
+@media (max-width: 768px) {
+  nav ul li {
+    margin: 10px 0;
+  }
+  nav ul li a {
+    font-size: 18px; /* Larger font size for easier tapping */
+  }
+}
+
+
+body, html {
+  font-size: 14px; /* Smaller font size for mobile devices */
+}
+
+@media (min-width: 768px) {
+  body, html {
+    font-size: 16px; /* Default font size for larger devices */
+  }
+}
+
+section {
+  padding: 10px; /* Reduced padding for mobile */
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 20px; /* Default padding for larger devices */
+  }
+}
+
+
+.social-links img, .social-links svg {
+  width: 32px; /* Adjust as needed */
+  height: 32px; /* Adjust as needed */
+}
+
+@media (min-width: 768px) {
+  .social-links img, .social-links svg {
+    width: 48px; /* Larger icons for larger devices */
+    height: 48px;
+  }
+}
