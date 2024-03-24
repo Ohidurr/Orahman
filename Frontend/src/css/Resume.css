@@ -1,0 +1,13 @@
+/* .resume-card, .about-container, .portfolio-container, .contact-container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .resume-card:hover, .about-container:hover, .portfolio-container:hover, .contact-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+   */
