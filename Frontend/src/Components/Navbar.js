@@ -1,57 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import { profile, nav } from '../data/content';
+import React, { useState, useEffect, useRef } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import '../css/Navbar.css';
 
+const NAV_LINKS = [
+  { label: 'Summary',    href: '#summary',    num: '00' },
+  { label: 'Experience', href: '#experience', num: '01' },
+  { label: 'Skills',     href: '#skills',     num: '02' },
+  { label: 'Projects',   href: '#work',       num: '03' },
+  { label: 'Education',  href: '#education',  num: '04' },
+];
+
 function Navbar() {
+  const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const menuPanelRef = useRef(null);
+  const menuBtnRef = useRef(null);
 
+  // Close on escape, outside click, or section click
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  // Lock body scroll when mobile menu open
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (!open) return;
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onClick = (e) => {
+      if (menuPanelRef.current && !menuPanelRef.current.contains(e.target)
+          && menuBtnRef.current && !menuBtnRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('click', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('click', onClick);
+    };
   }, [open]);
 
-  const close = () => setOpen(false);
-
   return (
-    <nav className={scrolled ? 'scrolled' : ''}>
-      <div className="nav-wrap">
-        <a href="#top" className="brand" onClick={close}>
-          <span className="brand-mark" aria-hidden="true" />
-          <span className="brand-name">{profile.shortName}</span>
+    <>
+      <button
+        ref={menuBtnRef}
+        className={`float-icon float-menu ${open ? 'open' : ''}`}
+        aria-label="Open menu"
+        aria-expanded={open}
+        type="button"
+        onClick={(e) => { e.stopPropagation(); setOpen((v) => !v); }}
+      >
+        <span className="bar" />
+        <span className="bar" />
+        <span className="bar" />
+      </button>
+
+      <button
+        className="float-icon float-theme"
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        type="button"
+        onClick={toggle}
+      >
+        {theme === 'dark' ? (
+          <svg className="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        ) : (
+          <svg className="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        )}
+      </button>
+
+      <nav
+        ref={menuPanelRef}
+        className={`menu-panel ${open ? 'open' : ''}`}
+        aria-label="Primary"
+      >
+        {NAV_LINKS.map((item) => (
+          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <span>{item.label}</span>
+            <span className="menu-num">{item.num}</span>
+          </a>
+        ))}
+        <a href="#contact" className="cta" onClick={() => setOpen(false)}>
+          Get in touch →
         </a>
-
-        <button
-          className={`menu-btn ${open ? 'open' : ''}`}
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          <span /><span /><span />
-        </button>
-
-        <ul className={`nav-list ${open ? 'open' : ''}`}>
-          {nav.map((item) => (
-            <li key={item.href}>
-              <a href={item.href} onClick={close}>{item.label}</a>
-            </li>
-          ))}
-          <li>
-            <a href="#contact" className="nav-cta" onClick={close}>
-              Get in touch
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 

@@ -1,0 +1,86 @@
+.palette-tag {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2), var(--glass-inset);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0;
+  animation: paletteTagIn 1s var(--ease) 0.6s forwards,
+             paletteTagOut 1s var(--ease) 4s forwards;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: calc(100vw - 140px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.palette-tag::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--glass-highlight);
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+.palette-swatch {
+  display: inline-flex;
+  gap: 3px;
+  position: relative;
+  z-index: 1;
+}
+.palette-swatch span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.palette-swatch span:nth-child(1) { background: var(--accent-1); box-shadow: 0 0 4px var(--accent-1); }
+.palette-swatch span:nth-child(2) { background: var(--accent-2); box-shadow: 0 0 4px var(--accent-2); }
+.palette-swatch span:nth-child(3) { background: var(--accent-3); box-shadow: 0 0 4px var(--accent-3); }
+
+.palette-tag-label { position: relative; z-index: 1; }
+
+@keyframes paletteTagIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes paletteTagOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+.palette-tag:hover {
+  animation-play-state: paused;
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .palette-tag {
+    top: 20px;
+    left: 76px;
+    right: 14px;
+    transform: none;
+    max-width: calc(100vw - 90px);
+    animation-name: paletteTagInMobile, paletteTagOutMobile;
+  }
+  @keyframes paletteTagInMobile {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes paletteTagOutMobile {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+  }
+}

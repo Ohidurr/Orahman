@@ -1,0 +1,21 @@
+.edu-item {
+  padding: 14px 0;
+  border-top: 1px solid var(--glass-border);
+}
+.edu-item:first-child { border-top: none; padding-top: 0; }
+.edu-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+.edu-school {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.edu-when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mute);
+}
