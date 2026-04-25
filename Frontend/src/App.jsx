@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
 
-import BgScene from './Components/BgScene';
-import Navbar from './Components/Navbar';
-import PaletteIndicator from './Components/PaletteIndicator';
-import Landing from './Components/Landing';
-import About from './Components/About';
-import Skills from './Components/Skills';
-import Portfolio from './Components/Portfolio';
-import Education from './Components/Education';
-import DailyCard from './Components/DailyCard';
-import Now from './Components/Now';
-import Contact from './Components/Contact';
-import Footer from './Components/Footer';
+import BgScene from './Components/BgScene.jsx';
+import Navbar from './Components/Navbar.jsx';
+import PaletteIndicator from './Components/PaletteIndicator.jsx';
+import Landing from './Components/Landing.jsx';
+import About from './Components/About.jsx';
+import Skills from './Components/Skills.jsx';
+import Portfolio from './Components/Portfolio.jsx';
+import Education from './Components/Education.jsx';
+import DailyCard from './Components/DailyCard.jsx';
+import Now from './Components/Now.jsx';
+import Contact from './Components/Contact.jsx';
+import Footer from './Components/Footer.jsx';
 
 import { useReveal } from './hooks/useReveal';
 // Import to trigger the random palette pick (and apply it to <html>)

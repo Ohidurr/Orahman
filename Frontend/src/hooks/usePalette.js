@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { palettes, paletteMeta, setPalette } from '../data/content';
+import { useState, useEffect, useCallback } from 'react';
+import { palettes, paletteMeta } from '../data/content';
 
 // Random per-load — no persistence (matches v4: "alive on every visit")
 function pickRandom() {
@@ -16,14 +16,30 @@ function readInitial() {
 }
 
 export function usePalette() {
-  const [palette, setPalette] = useState(readInitial);
+  const [palette, setPaletteState] = useState(readInitial);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-palette', palette);
   }, [palette]);
 
+  // Expose a setter for programmatic palette changes (e.g. a "try another"
+  // button on a future settings page). Validates against known palettes.
+  const setPalette = useCallback((next) => {
+    if (palettes.includes(next)) setPaletteState(next);
+  }, []);
+
+  // Convenience: cycle to a random different palette.
+  const shuffle = useCallback(() => {
+    setPaletteState((current) => {
+      const others = palettes.filter((p) => p !== current);
+      return others[Math.floor(Math.random() * others.length)];
+    });
+  }, []);
+
   return {
     palette,
     meta: paletteMeta[palette] || paletteMeta.aurora,
+    setPalette,
+    shuffle,
   };
 }

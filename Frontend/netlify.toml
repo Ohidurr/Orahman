@@ -1,0 +1,28 @@
+# Netlify config for the Vite-built React app.
+# ─────────────────────────────────────────────────────────────────────
+# Build pipeline: `npm run build` → outputs to `dist/`.
+# Vite doesn't bundle ESLint, so warnings can't break the build the way
+# CRA's `CI=true` did. The config here is just paths + caching + SPA
+# routing safety.
+
+[build]
+  base    = "Frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 requires Node 20.19+. Node 22 LTS is current and well-supported.
+  NODE_VERSION = "22"
+
+# SPA fallback — every route serves the React entry. Not strictly needed
+# for a single-page site, but harmless and useful if pages are added later.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# Long-term caching for hashed Vite assets (anything in /assets is hashed).
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

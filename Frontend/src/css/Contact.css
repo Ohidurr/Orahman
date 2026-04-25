@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 420px;
+  max-width: 460px;
   margin: 0 auto;
 }
 .contact-slot {
@@ -39,21 +39,32 @@
   gap: 12px;
   padding: 14px 18px;
   background: var(--chip-bg);
-  border: 1px dashed var(--glass-border-hi);
+  border: 1px solid var(--glass-border);
   border-radius: 14px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
-  color: var(--ink-mute);
+  color: var(--ink-soft);
   text-align: left;
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+}
+.contact-slot:hover {
+  background: var(--chip-bg-hi);
+  border-color: var(--accent-3);
+  transform: translateY(-1px);
 }
 .contact-slot svg {
   width: 18px; height: 18px;
   color: var(--accent-3);
   flex-shrink: 0;
 }
-.contact-slot strong { color: var(--ink-soft); font-weight: 600; }
-.contact-slot em { color: var(--ink-soft); font-style: normal; opacity: 0.55; }
+.contact-slot strong { color: var(--ink); font-weight: 600; }
+.contact-slot em {
+  color: var(--ink-soft);
+  font-style: normal;
+}
 
 @media (max-width: 720px) {
   .contact-panel h2 { font-size: 24px; }
+  .contact-slot { font-size: 12px; padding: 12px 14px; }
 }

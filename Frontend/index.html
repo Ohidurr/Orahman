@@ -17,9 +17,9 @@
     <meta property="og:description" content="SRE who cut MTTR from 3hr+ to under 60 min and ships observability teams actually use." />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,6 @@
           document.documentElement.setAttribute('data-theme', stored || sys);
           var mode = localStorage.getItem('resumeMode') || 'recruiter';
           document.documentElement.setAttribute('data-mode', mode);
-          // Random palette per page load — feels alive on every visit.
           var palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
           document.documentElement.setAttribute('data-palette', palette);
         } catch(e) {
@@ -53,5 +52,6 @@
   <body>
     <noscript>You need to enable JavaScript to run this site.</noscript>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
