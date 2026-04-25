@@ -1,97 +1,32 @@
-# Ohidur Rahman — Personal Site
+# Ohidur's Personal Website
 
-Liquid Glass design system, ported into React. Same CRA stack as before; drop-in
-replacement for the existing `Frontend/` folder.
+Welcome to the repository of my personal website, a dynamic digital space that reflects my professional journey, interests, and skills. This platform serves not only as a portfolio of my work but also as a testament to my continuous pursuit of learning and personal growth.
 
-## Quick start
+## Overview
 
-```bash
-cd Frontend
-npm install
-npm start
-```
+This website marks a significant evolution from my initial foray into the digital world with a basic HTML5 site. Embracing modern web technologies, it's built with React, showcasing a more interactive and refined user experience. Here, visitors can find detailed insights into my projects, achievements, and the values that drive my work.
 
-Opens at <http://localhost:3000>. Edits hot-reload.
+### Features
 
-## What's in here
+- **Landing Page**: A welcoming entrance that introduces visitors to my site.
+- **About Me**: An insight into my passions, including my interest in learning, implementing innovative solutions, and my hobbies outside work.
+- **Portfolio**: A showcase of my projects and contributions to various industries.
+- **Contact**: A section for potential collaborators to connect with me.
 
-```
-Frontend/
-├── public/
-│   ├── index.html        ← inline no-flash theme + palette init
-│   ├── manifest.json
-│   └── robots.txt
-├── src/
-│   ├── Components/
-│   │   ├── BgScene.js          ← animated orb backdrop
-│   │   ├── Navbar.js           ← two floating icons + dropdown
-│   │   ├── PaletteIndicator.js ← floating palette name chip
-│   │   ├── Landing.js          ← hero + Recruiter/Engineer/Executive toggle
-│   │   ├── About.js            ← Professional Experience timeline
-│   │   ├── Skills.js           ← Grouped skill chips (incl. AI Agents)
-│   │   ├── Portfolio.js        ← Projects panel
-│   │   ├── Education.js
-│   │   ├── DailyCard.js        ← Word + Fact of the Day with refresh
-│   │   ├── Now.js              ← currently working on
-│   │   ├── Contact.js          ← contact slots (placeholders)
-│   │   └── Footer.js
-│   ├── css/                    ← one stylesheet per component
-│   ├── data/
-│   │   └── content.js          ← ALL CONTENT lives here
-│   ├── hooks/
-│   │   ├── useTheme.js         ← dark/light + localStorage + system pref
-│   │   ├── usePalette.js       ← random palette per page load
-│   │   ├── useResumeMode.js    ← Recruiter/Engineer/Executive
-│   │   └── useReveal.js        ← IntersectionObserver wrapper
-│   ├── App.js
-│   ├── App.css                 ← all design tokens + 7 palettes
-│   ├── index.css               ← font imports
-│   └── index.js
-└── package.json
-```
+## Continuous Improvement
 
-## How to edit
+The nature of both technology and my personal development journey ensures that this site is always under improvement. New projects, experiences, and skills will be added as I progress in my career and hobbies.
 
-**Content:** `src/data/content.js` — name, role, summary (3 versions),
-experience bullets, skill groups, projects, education, daily words/facts,
-links. Nothing else needs to change for content updates.
+## Professional Aspirations
 
-**Design tokens:** `src/App.css` — every color is a CSS custom property
-under `[data-theme="..."]` and `[data-theme][data-palette="..."]`.
+I am currently seeking new opportunities where I can contribute my skills in technology and innovation. Through this site, I aim to connect with potential employers, collaborators, and fellow tech enthusiasts. Let's explore how we can drive success together.
 
-## Features
+### Get in Touch
 
-- **7 random palettes** per page load (Aurora, Sunset, Ocean, Forest, Nebula,
-  Ember, Parchment) — site feels alive on every visit
-- **Light & dark mode** with system preference + manual toggle
-- **Dynamic resume views** — Recruiter, Engineer, Executive (toggle in hero)
-- **Daily Word + Fact** with smooth refresh animation
-- **Liquid glass UI** — backdrop-blur, specular highlights, layered depth
-- **Two floating nav icons** that stack vertically on mobile
-- **No flash on load** — theme/palette set inline before paint
-- **Respects `prefers-reduced-motion`**
+I'm open to discussing job opportunities, projects, or collaborations that can benefit from my expertise and passion. Feel free to reach out through the **Contact** section of my website.
 
-## Before deploying
+---
 
-1. Edit `src/data/content.js`:
-   - Replace `links.email`, `linkedin`, `github`, `twitter` with real URLs
-   - Edit the `SLOTS` array in `src/Components/Contact.js` to show your real
-     contact values (the slots are placeholder UI)
-2. Drop a real `resume.pdf` into `public/`
-3. (Optional) Add `og-image.png` (1200×630) to `public/` for link previews
+Thank you for visiting my personal website. I look forward to connecting with you and exploring future possibilities.
 
-## Deploy
-
-```bash
-npm run build
-```
-
-Outputs a static bundle to `build/`. Drop into Vercel, Netlify, Cloudflare
-Pages, or anywhere static. No server required.
-
-## Stack
-
-- React 18 (Create React App)
-- Plain CSS (no Tailwind, no UI library)
-- Google Fonts (Inter, JetBrains Mono)
-- Zero runtime dependencies beyond React itself
+[View My Website](https://orahman.dev/) <!-- Replace # with your website's URL -->
