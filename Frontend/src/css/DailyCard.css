@@ -1,0 +1,61 @@
+.fact-content {
+  position: relative;
+  min-height: 100px;
+  transition: opacity 0.3s var(--ease), transform 0.4s var(--spring);
+}
+.fact-content.swapping {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.fact-block { margin-bottom: 18px; }
+.fact-block:last-child { margin-bottom: 0; }
+
+.fact-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.fact-tag.word { color: var(--accent-3); }
+.fact-tag.fact { color: var(--accent-5); }
+
+.fact-headline {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+.fact-body {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.refresh-btn {
+  width: 32px; height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--chip-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  font-family: inherit;
+  padding: 0;
+}
+.refresh-btn:hover {
+  color: var(--ink);
+  border-color: var(--glass-border-hi);
+  background: var(--chip-bg-hi);
+}
+.refresh-btn:active { transform: scale(0.92); }
+.refresh-btn svg {
+  width: 14px; height: 14px;
+  transition: transform 0.6s var(--spring);
+}
+.refresh-btn.spinning svg { transform: rotate(360deg); }

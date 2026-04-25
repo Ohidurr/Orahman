@@ -1,0 +1,148 @@
+/* ─── FLOATING ICONS ─── */
+.float-icon {
+  position: fixed;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--nav-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25), var(--glass-inset);
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  animation: floatIn 0.7s var(--ease) 0.3s forwards;
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s,
+    top 0.55s var(--spring),
+    left 0.55s var(--spring),
+    right 0.55s var(--spring);
+  font-family: inherit;
+  padding: 0;
+}
+@keyframes floatIn { to { opacity: 1; } }
+
+.float-icon::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--glass-highlight);
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+
+.float-icon:hover {
+  border-color: var(--glass-border-hi);
+  transform: translate3d(0, -2px, 0) scale(1.05);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.3), var(--glass-inset);
+}
+.float-icon:active { transform: scale(0.92); }
+.float-icon svg { width: 20px; height: 20px; position: relative; z-index: 1; }
+
+/* Default desktop position: corners */
+.float-menu  { top: 16px; left: 16px;  animation-delay: 0.3s; }
+.float-theme { top: 16px; right: 16px; animation-delay: 0.4s; }
+
+/* Hamburger bars */
+.float-menu .bar {
+  position: absolute;
+  width: 18px;
+  height: 1.75px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s var(--spring), opacity 0.25s;
+}
+.float-menu .bar:nth-child(1) { transform: translateY(-5px); }
+.float-menu .bar:nth-child(2) { transform: translateY(0); }
+.float-menu .bar:nth-child(3) { transform: translateY(5px); }
+.float-menu.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+.float-menu.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.float-menu.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+/* Mobile: stack both vertically in upper-left */
+@media (max-width: 720px) {
+  .float-menu  { top: 14px; left: 14px; right: auto; }
+  .float-theme { top: 70px; left: 14px; right: auto; }
+}
+
+/* ─── DROPDOWN MENU PANEL ─── */
+.menu-panel {
+  position: fixed;
+  top: 76px;
+  left: 16px;
+  z-index: 99;
+  min-width: 240px;
+  padding: 12px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), var(--glass-inset);
+  display: none;
+}
+.menu-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: var(--glass-highlight);
+  border-radius: 20px 20px 0 0;
+  pointer-events: none;
+}
+.menu-panel.open {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: menuIn 0.35s var(--spring);
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.menu-panel a {
+  position: relative;
+  z-index: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: all 0.25s var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 500;
+}
+.menu-panel a:hover {
+  color: var(--ink);
+  background: var(--chip-bg-hi);
+  transform: translateX(2px);
+}
+.menu-panel a.cta {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+  color: white;
+  margin-top: 6px;
+}
+.menu-panel a.cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.menu-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+  margin-left: auto;
+}
+
+/* Mobile: push the menu down so it doesn't overlap the second icon */
+@media (max-width: 720px) {
+  .menu-panel { top: 132px; left: 14px; right: 14px; min-width: 0; }
+}

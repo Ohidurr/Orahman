@@ -1,0 +1,59 @@
+.contact-panel {
+  grid-column: 1 / -1;
+  padding: clamp(28px, 4vw, 56px);
+  text-align: center;
+}
+.contact-panel .panel-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  margin: 0 auto 20px;
+}
+.contact-panel .panel-icon svg { width: 22px; height: 22px; }
+.contact-panel h2 {
+  font-size: clamp(24px, 4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  line-height: 1.15;
+  background: linear-gradient(135deg, var(--ink) 0%, color-mix(in srgb, var(--ink) 70%, transparent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contact-panel p {
+  color: var(--ink-soft);
+  max-width: 50ch;
+  margin: 0 auto 28px;
+  font-size: 15px;
+}
+.contact-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.contact-slot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--chip-bg);
+  border: 1px dashed var(--glass-border-hi);
+  border-radius: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-align: left;
+}
+.contact-slot svg {
+  width: 18px; height: 18px;
+  color: var(--accent-3);
+  flex-shrink: 0;
+}
+.contact-slot strong { color: var(--ink-soft); font-weight: 600; }
+.contact-slot em { color: var(--ink-soft); font-style: normal; opacity: 0.55; }
+
+@media (max-width: 720px) {
+  .contact-panel h2 { font-size: 24px; }
+}

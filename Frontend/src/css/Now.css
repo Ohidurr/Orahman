@@ -1,0 +1,10 @@
+.now-text {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.now-text em {
+  color: var(--ink);
+  font-style: italic;
+  font-weight: 500;
+}

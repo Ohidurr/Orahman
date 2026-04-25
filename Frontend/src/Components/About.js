@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
-import '../css/About.css'; // Corrected import path
+import React from 'react';
+import { experience } from '../data/content';
+import '../css/About.css';
 
 function About() {
-  const [showResume, setShowResume] = useState(false);
-
-  const toggleResume = () => {
-    setShowResume(!showResume);
-    // Optional: Scroll to the resume view when opened
-    if (!showResume) {
-      setTimeout(() => {
-        document.getElementById("resumeView").scrollIntoView({ behavior: 'smooth' });
-      }, 100); // Adjust timing if necessary
-    }
-  };
-
   return (
-    <div className="about-container">
-      <h2>About Me</h2>
-      <p>Passionate about learning and implementing innovative protocols to drive industries towards their goals. With a proven track record of reshaping industries, I thrive on tackling challenges head-on. Outside of work, I enjoy music, reading, hiking, and exploring new destinations. Let's connect and collaborate for success!</p>
-      <button onClick={toggleResume} className="view-resume-button">View My Resume</button>
-      {showResume && (
-        <div id="resumeView" className="resume-container">
-          <object data={`${process.env.PUBLIC_URL}/resume.pdf`} type="application/pdf" width="100%" height="600">
-            <p>Your browser does not support PDFs. Please download the PDF to view it: <a href={`${process.env.PUBLIC_URL}/resume.pdf`}>Download PDF</a>.</p>
-          </object>
+    <section id="experience" className="panel glass">
+      <div className="panel-head">
+        <div className="panel-title">
+          <div className="panel-icon exp" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2.5" strokeLinecap="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+            </svg>
+          </div>
+          <h2>Professional Experience</h2>
         </div>
-      )}
-    </div>
+        <span className="panel-num">01</span>
+      </div>
+
+      <div className="exp-list">
+        {experience.map((role, i) => (
+          <div className="exp-row" key={i}>
+            <div className="exp-when">{role.when}</div>
+            <div>
+              <div className="exp-title">{role.title}</div>
+              <div className="exp-company">
+                {role.company}
+                {role.tag && <span className="tag">{role.tag}</span>}
+              </div>
+              <ul className="exp-bullets">
+                {role.bullets.map((b, j) => (
+                  <li key={j}>
+                    {b.leadership && (
+                      <span className="leadership-tag">{b.leadership}</span>
+                    )}
+                    <span dangerouslySetInnerHTML={{ __html: b.text }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

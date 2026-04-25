@@ -1,18 +1,78 @@
-.view-resume-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .view-resume-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .resume-container {
-    margin-top: 20px;
-  }
-  
+.exp-list { display: flex; flex-direction: column; }
+.exp-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--glass-border);
+}
+.exp-row:first-child { border-top: none; padding-top: 4px; }
+.exp-when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-mute);
+  padding-top: 2px;
+}
+.exp-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.exp-company {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.exp-company .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-3);
+  margin-left: 6px;
+}
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.exp-bullets li {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+.exp-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: 9px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent-3);
+  opacity: 0.75;
+}
+.exp-bullets strong { color: var(--ink); font-weight: 600; }
+
+.leadership-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-5);
+  background: color-mix(in srgb, var(--accent-5) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-5) 30%, transparent);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
+@media (max-width: 720px) {
+  .exp-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  .exp-when { font-size: 11px; }
+  .exp-title { font-size: 16px; }
+  .exp-company { font-size: 13px; }
+  .exp-company .tag { display: block; margin-left: 0; margin-top: 2px; }
+}
