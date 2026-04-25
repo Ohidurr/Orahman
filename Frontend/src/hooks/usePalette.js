@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { palettes, paletteMeta } from '../data/content';
+import { palettes, paletteMeta, setPalette } from '../data/content';
 
 // Random per-load — no persistence (matches v4: "alive on every visit")
 function pickRandom() {
