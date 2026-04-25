@@ -1,8 +1,7 @@
-# Ohidur Rahman — Personal Site (v2)
+# Ohidur Rahman — Personal Site
 
-A redesign of the original CRA-based personal site. Same stack, cleaner
-architecture, much stronger visual identity, and a real portfolio section
-instead of an empty one.
+Liquid Glass design system, ported into React. Same CRA stack as before; drop-in
+replacement for the existing `Frontend/` folder.
 
 ## Quick start
 
@@ -12,98 +11,74 @@ npm install
 npm start
 ```
 
-Open <http://localhost:3000>.
+Opens at <http://localhost:3000>. Edits hot-reload.
 
-## Stack
-
-- React 18 (Create React App)
-- Plain CSS, scoped per component, with design tokens in `src/App.css`
-- Font Awesome for social icons
-- Google Fonts (Fraunces, Inter, JetBrains Mono)
-- Zero runtime dependencies beyond what was already there + `@fortawesome/free-solid-svg-icons`
-
-## How to edit content
-
-**All copy lives in one file:** `src/data/content.js`
-
-Open it and edit:
-
-- `profile` — your name, role, location, availability status, hero blurbs
-- `links` — email, GitHub, LinkedIn, X, resume path
-- `projects` — array of work items (year, title, description, tags, link)
-- `experience` — timeline entries
-- `skills` — array of strings
-- `writing` — blog/note entries (set to `[]` to hide the section entirely)
-- `nav` — which sections appear in the nav
-
-Nothing else needs to change for a content update. The layout, animations,
-and responsive behavior all read from this file.
-
-## How to edit design
-
-All colors, fonts, and spacing tokens live at the top of `src/App.css`:
-
-```css
-:root {
-  --bg: #f4f1ea;           /* page background */
-  --ink: #17170f;          /* primary text */
-  --accent: #c8431a;       /* accent color (italic words, hover) */
-  --serif: 'Fraunces', ... /* display font */
-  /* ... etc */
-}
-```
-
-Dark mode is automatic via `prefers-color-scheme` and uses the same
-variable names inside a `@media (prefers-color-scheme: dark)` block.
-
-## Project structure
+## What's in here
 
 ```
 Frontend/
 ├── public/
-│   ├── index.html        ← SEO, OG tags, theme color
+│   ├── index.html        ← inline no-flash theme + palette init
 │   ├── manifest.json
-│   └── resume.pdf        ← drop your resume here
+│   └── robots.txt
 ├── src/
 │   ├── Components/
-│   │   ├── Navbar.js     ← sticky nav + mobile hamburger
-│   │   ├── Landing.js    ← hero with animated headline + wave easter egg
-│   │   ├── Portfolio.js  ← work list (reads from data/content.js)
-│   │   ├── About.js      ← bio, experience timeline, skills, resume embed
-│   │   ├── Writing.js    ← optional writing/notes grid
-│   │   ├── Contact.js    ← big email link, social chips
+│   │   ├── BgScene.js          ← animated orb backdrop
+│   │   ├── Navbar.js           ← two floating icons + dropdown
+│   │   ├── PaletteIndicator.js ← floating palette name chip
+│   │   ├── Landing.js          ← hero + Recruiter/Engineer/Executive toggle
+│   │   ├── About.js            ← Professional Experience timeline
+│   │   ├── Skills.js           ← Grouped skill chips (incl. AI Agents)
+│   │   ├── Portfolio.js        ← Projects panel
+│   │   ├── Education.js
+│   │   ├── DailyCard.js        ← Word + Fact of the Day with refresh
+│   │   ├── Now.js              ← currently working on
+│   │   ├── Contact.js          ← contact slots (placeholders)
 │   │   └── Footer.js
-│   ├── css/              ← one stylesheet per component
+│   ├── css/                    ← one stylesheet per component
 │   ├── data/
-│   │   └── content.js    ← ALL content lives here
+│   │   └── content.js          ← ALL CONTENT lives here
+│   ├── hooks/
+│   │   ├── useTheme.js         ← dark/light + localStorage + system pref
+│   │   ├── usePalette.js       ← random palette per page load
+│   │   ├── useResumeMode.js    ← Recruiter/Engineer/Executive
+│   │   └── useReveal.js        ← IntersectionObserver wrapper
 │   ├── App.js
-│   ├── App.css           ← design tokens + shared primitives
-│   ├── index.js
-│   └── index.css         ← font imports
+│   ├── App.css                 ← all design tokens + 7 palettes
+│   ├── index.css               ← font imports
+│   └── index.js
 └── package.json
 ```
 
-## What changed from v1
+## How to edit
 
-| Area | Before | After |
-|---|---|---|
-| Portfolio | Empty `<h2>` | 4 real project cards with tags, years, hover states |
-| Landing | "Welcome." + wave emoji | Animated headline, status dot, location, two blurbs |
-| Mobile nav | None (items stacked) | Full-screen serif drawer with hamburger |
-| Typography | Consolas only | Fraunces / Inter / JetBrains Mono system |
-| About | One generic paragraph | Bio + experience timeline + skills grid + resume embed |
-| Contact | 3 icons | Big serif email + labeled social chips |
-| Dark mode | None | Automatic via `prefers-color-scheme` |
-| SEO | Default CRA | Full meta tags, OG, Twitter card |
-| Content editing | Scattered across components | Single `data/content.js` file |
-| Motion | Wave emoji only | Staggered reveals, scroll-triggered, `prefers-reduced-motion` respected |
+**Content:** `src/data/content.js` — name, role, summary (3 versions),
+experience bullets, skill groups, projects, education, daily words/facts,
+links. Nothing else needs to change for content updates.
+
+**Design tokens:** `src/App.css` — every color is a CSS custom property
+under `[data-theme="..."]` and `[data-theme][data-palette="..."]`.
+
+## Features
+
+- **7 random palettes** per page load (Aurora, Sunset, Ocean, Forest, Nebula,
+  Ember, Parchment) — site feels alive on every visit
+- **Light & dark mode** with system preference + manual toggle
+- **Dynamic resume views** — Recruiter, Engineer, Executive (toggle in hero)
+- **Daily Word + Fact** with smooth refresh animation
+- **Liquid glass UI** — backdrop-blur, specular highlights, layered depth
+- **Two floating nav icons** that stack vertically on mobile
+- **No flash on load** — theme/palette set inline before paint
+- **Respects `prefers-reduced-motion`**
 
 ## Before deploying
 
-1. Replace `links.email` in `src/data/content.js` with your real email
-2. Drop your real resume as `public/resume.pdf`
-3. (Optional) Drop an `og-image.png` in `public/` — 1200×630 PNG for rich link previews
-4. Fill in real project data in `src/data/content.js` (the 4 items there are plausible placeholders based on your background)
+1. Edit `src/data/content.js`:
+   - Replace `links.email`, `linkedin`, `github`, `twitter` with real URLs
+   - Edit the `SLOTS` array in `src/Components/Contact.js` to show your real
+     contact values (the slots are placeholder UI)
+2. Drop a real `resume.pdf` into `public/`
+3. (Optional) Add `og-image.png` (1200×630) to `public/` for link previews
 
 ## Deploy
 
@@ -111,5 +86,12 @@ Frontend/
 npm run build
 ```
 
-Outputs a static bundle to `build/`. Deploy anywhere — Vercel, Netlify,
-GitHub Pages, Cloudflare Pages. No server needed.
+Outputs a static bundle to `build/`. Drop into Vercel, Netlify, Cloudflare
+Pages, or anywhere static. No server required.
+
+## Stack
+
+- React 18 (Create React App)
+- Plain CSS (no Tailwind, no UI library)
+- Google Fonts (Inter, JetBrains Mono)
+- Zero runtime dependencies beyond React itself
