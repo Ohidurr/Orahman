@@ -7,33 +7,36 @@ export const profile = {
   shortName: 'Ohidur',
   role: 'Site Reliability Engineer',
   location: 'New York, NY',
-  status: 'Open to new roles & collaborations',
+  status: 'Open to new roles',
   available: true,
 
   // Three views toggled by the Recruiter / Engineer / Executive buttons
-  summary: {
-    recruiter:
-      'SRE who cut MTTR from 3hr+ to under 60 min and ships observability teams actually use.',
-    engineer:
-      'Production SRE working in observability, incident response, and AIOps. Cut MTTR 3hr → <60 min via standardized RCA and Prometheus + OpsGenie tooling. Currently exploring Claude Code, MCP, and agent workflows for next-gen runbook automation.',
-    executive:
-      'Reliability engineer who reduced incident resolution time by 67% while leading cross-team incident response, onboarding, and tooling adoption. Operates with GSA Public Trust clearance.',
-  },
-  // Phrase to highlight in each summary view
-  summaryHighlight: {
-    recruiter: 'cut MTTR from 3hr+ to under 60 min',
-    engineer: 'Cut MTTR 3hr → <60 min',
-    executive: 'reduced incident resolution time by 67%',
-  },
+summary: {
+  recruiter:
+    'SRE focused on making systems predictable under pressure turning noisy alerts into clear signals and keeping production stable when it matters most.',
+
+  engineer:
+    'Production SRE building observability, alerting pipelines, and automation that engineers actually trust. Works across Prometheus, incident response flows, and system reliability patterns, with a focus on reducing noise and improving signal clarity. Exploring agent runbooks and MCP based workflows.',
+
+  executive:
+    'Reliability-focused engineer improving system stability, reducing operational risk, and enabling teams to respond faster and with more clarity during critical incidents. Drives adoption of monitoring, response processes, and scalable operational standards.',
+},
+
+// Phrase to highlight in each summary view
+summaryHighlight: {
+  recruiter: 'systems predictable under pressure',
+  engineer: 'automation that engineers actually trust',
+  executive: 'reducing operational risk',
+}
 };
 
 // Replace with real values before deploying
 export const links = {
   email: 'your.email@example.com',
-  linkedin: 'https://linkedin.com/in/your-handle',
-  github: 'https://github.com/your-handle',
-  twitter: 'https://twitter.com/your-handle',
-  resume: '/resume.pdf', // place a real resume.pdf in /public
+  linkedin: 'https://linkedin.com/in/ohidur-rahman',
+  github: 'https://github.com/ohidurr/',
+  twitter: 'https://twitter.com/_ohidur',
+  //resume: '/resume.pdf', // place a real resume.pdf in /public
 };
 
 export const experience = [
